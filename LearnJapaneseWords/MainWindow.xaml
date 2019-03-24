@@ -8,13 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="Файл"></MenuItem>
+            <MenuItem Header="Файл" />
         </Menu>
-        <Grid Name="MenuGrid"
+        <Grid Name="MenuGrid" Visibility="Collapsed"
               Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -26,7 +26,7 @@
                 <Button Name="btnBeginTest" Click="BtnBeginTest_Click">Начать тест</Button>
             </StackPanel>
         </Grid>
-        <Grid Name="TestGrid" Grid.Row="1" Visibility="Collapsed">
+        <Grid Name="TestGrid" Grid.Row="1" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -34,30 +34,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel>
-                <TextBlock>Тут будет вопрос</TextBlock>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Name="tbQuestionNumber" />
+                <TextBlock Name="tbQuestion" />
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <Border
                     BorderBrush="Black"
                     BorderThickness="1">
                     <InkCanvas Name="theInkCanvas"
-                               Background="LightGray" StrokeCollected="TheInkCanvas_StrokeCollected" ManipulationStarted="TheInkCanvas_ManipulationStarted" />
+                               Background="LightGray" StrokeCollected="TheInkCanvas_StrokeCollected"
+                               ManipulationStarted="TheInkCanvas_ManipulationStarted" />
                 </Border>
-                <StackPanel Margin="0,30,0,0">
-                    
-                        <Border BorderThickness="1"
-                                BorderBrush="Black"
-                            >
-                            <TextBlock Name="textBox1"
-                                       Width="Auto"
-                            />
-                    </Border>
-                    
+                <StackPanel Margin="0,15,0,0">
                     <Button Name="btnClear"
-                            Content="Clear Canvas"
-                            Width="75"
+                            Content="Очистить"
                             Click="btnClear_Click" />
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                        <TextBlock Text="Ваш ответ:" Margin="0,0,10,0" />
+                        <TextBlock Name="tbRecognised" />
+                    </StackPanel>
+
+                    <Button Name="btnCheckAnswer" Click="BtnCheckAnswer_Click">Проверить</Button>
+                    <TextBlock Name="tbAnswer" Height="25"/>
+                    <Button Name="btnNextQuestion" Click="BtnNextQuestion_Click">Дальше</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

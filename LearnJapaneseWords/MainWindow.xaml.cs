@@ -28,16 +28,21 @@ namespace LearnJapaneseWords
         DispatcherTimer waitTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
         Vocabulary vocabulary = new Vocabulary();
 
+        private int currentQuestion = -1;
+
         public MainWindow()
         {
             InitializeComponent();
             waitTimer.Tick += (sender, args) => { Recognise(); };
             vocabulary.Load("..\\..\\..\\mnn1_vocabulary.json");
+
+            MenuGrid.Visibility = Visibility.Visible;
+            TestGrid.Visibility = Visibility.Collapsed;
         }
 
         private void Recognise() {
             if (theInkCanvas.Strokes.Count == 0) {
-                textBox1.Text = string.Empty;
+                tbRecognised.Text = string.Empty;
                 return;
             }
 
@@ -53,12 +58,18 @@ namespace LearnJapaneseWords
                     context.Strokes = ink.Strokes;
                     var result = context.Recognize(out var status);
                     if (status == RecognitionStatus.NoError)
-                        textBox1.Text = result.TopString;
+                        tbRecognised.Text = result.TopString;
                     else
                         MessageBox.Show("Recognition failed");
 
                 }
             }
+        }
+
+        private void RefreshQuestionText() {
+            var currentWord = vocabulary.Lessons[0].Words[currentQuestion];
+            tbQuestionNumber.Text = $"{currentQuestion + 1} из {vocabulary.Lessons[0].Words.Count}";
+            tbQuestion.Text = currentWord.Rus;
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -82,6 +93,34 @@ namespace LearnJapaneseWords
         private void BtnBeginTest_Click(object sender, RoutedEventArgs e) {
             MenuGrid.Visibility = Visibility.Collapsed;
             TestGrid.Visibility = Visibility.Visible;
+
+            currentQuestion = 0;
+            RefreshQuestionText();
+        }
+
+        private void BtnNextQuestion_Click(object sender, RoutedEventArgs e) {
+            if (currentQuestion + 1 < vocabulary.Lessons[0].Words.Count) {
+                currentQuestion++;
+            }
+            else {
+                currentQuestion = 0;
+            }
+            RefreshQuestionText();
+        }
+
+        private void BtnCheckAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            var answer = vocabulary.Lessons[0].Words[currentQuestion];
+            var userAnswer = tbRecognised.Text;
+            tbAnswer.Text = $"{answer.JpnKana} / {answer.JpnKanji}";
+            if (userAnswer == answer.JpnKana || userAnswer == answer.JpnKanji)
+            {
+                tbAnswer.Background = Brushes.LightGreen;
+            }
+            else
+            {
+                tbAnswer.Background = Brushes.PaleVioletRed;
+            }
         }
     }
 }
