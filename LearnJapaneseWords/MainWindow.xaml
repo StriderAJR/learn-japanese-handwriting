@@ -23,7 +23,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button Name="btnBeginTest" Click="BtnBeginTest_Click">Начать тест</Button>
+                <Button Name="btnBeginTest" Click="BtnBeginTest_Click">Слова</Button>
+                <Button Name="btnHiraganaTest" Click="BtnHiraganaTest_Click">Хирагана</Button>
+                <Button Name="btnKatakanaTest" Click="BtnKatakanaTest_Click">Катакана</Button>
             </StackPanel>
         </Grid>
         <Grid Name="TestGrid" Grid.Row="1" Visibility="Visible">

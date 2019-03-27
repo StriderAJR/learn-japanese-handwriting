@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -79,14 +80,16 @@ namespace LearnJapaneseWords
         DispatcherTimer waitTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5) };
         Vocabulary vocabulary = new Vocabulary();
         private Recognizer jpnRecognizer = null;
+        RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
 
         private int currentQuestion = -1;
+        private TestQuestion[] test = new TestQuestion[0];
 
         public MainWindow()
         {
             InitializeComponent();
             waitTimer.Tick += (sender, args) => { Recognise(); };
-            vocabulary.Load("..\\..\\..\\mnn1_vocabulary.json");
+            vocabulary.Load("..\\..\\..\\mnn1_vocabulary.json", "..\\..\\..\\hiragana.json", "..\\..\\..\\katakana.json");
 
             MenuGrid.Visibility = Visibility.Visible;
             TestGrid.Visibility = Visibility.Collapsed;
@@ -124,9 +127,17 @@ namespace LearnJapaneseWords
         }
 
         private void RefreshQuestionText() {
-            var currentWord = vocabulary.Lessons[0].Words[currentQuestion];
+            var currentWord = test[currentQuestion];
             tbQuestionNumber.Text = $"{currentQuestion + 1} из {vocabulary.Lessons[0].Words.Count}";
-            tbQuestion.Text = currentWord.Rus;
+            tbQuestion.Text = currentWord.Question;
+        }
+
+        private void BeginTest() {
+            MenuGrid.Visibility = Visibility.Collapsed;
+            TestGrid.Visibility = Visibility.Visible;
+
+            currentQuestion = 0;
+            RefreshQuestionText();
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -147,16 +158,8 @@ namespace LearnJapaneseWords
             waitTimer.Stop();
         }
 
-        private void BtnBeginTest_Click(object sender, RoutedEventArgs e) {
-            MenuGrid.Visibility = Visibility.Collapsed;
-            TestGrid.Visibility = Visibility.Visible;
-
-            currentQuestion = 0;
-            RefreshQuestionText();
-        }
-
         private void BtnNextQuestion_Click(object sender, RoutedEventArgs e) {
-            if (currentQuestion + 1 < vocabulary.Lessons[0].Words.Count) {
+            if (currentQuestion + 1 < test.Length) {
                 currentQuestion++;
             }
             else {
@@ -167,10 +170,10 @@ namespace LearnJapaneseWords
 
         private void BtnCheckAnswer_Click(object sender, RoutedEventArgs e)
         {
-            var answer = vocabulary.Lessons[0].Words[currentQuestion];
+            var answers = test[currentQuestion].Answers;
             var userAnswer = tbRecognised.Text;
-            tbAnswer.Text = $"{answer.JpnKana} / {answer.JpnKanji}";
-            if (userAnswer == answer.JpnKana || userAnswer == answer.JpnKanji)
+            tbAnswer.Text = string.Join(", ", answers);
+            if (answers.Contains(tbRecognised.Text))
             {
                 tbAnswer.Background = Brushes.LightGreen;
             }
@@ -178,6 +181,53 @@ namespace LearnJapaneseWords
             {
                 tbAnswer.Background = Brushes.PaleVioletRed;
             }
+        }
+
+        static int GetNextInt32(RNGCryptoServiceProvider rnd)
+        {
+            byte[] randomInt = new byte[4];
+            rnd.GetBytes(randomInt);
+            return Convert.ToInt32(randomInt[0]);
+        }
+
+        private void BtnBeginTest_Click(object sender, RoutedEventArgs e)
+        {
+            test = vocabulary.Lessons[0].Words.Select(x =>
+                new TestQuestion
+                {
+                    Question = x.Rus,
+                    Answers = new[] { x.JpnKana, x.JpnKanji }
+                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
+
+            
+            test = test.ToArray();
+            
+
+            BeginTest();
+        }
+
+        private void BtnHiraganaTest_Click(object sender, RoutedEventArgs e)
+        {
+            test = vocabulary.Hiragana.Select(x =>
+                new TestQuestion
+                {
+                    Question = x.Romanization,
+                    Answers = new[] { x.Character }
+                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
+
+            BeginTest();
+        }
+
+        private void BtnKatakanaTest_Click(object sender, RoutedEventArgs e)
+        {
+            test = vocabulary.Katakana.Select(x =>
+                new TestQuestion
+                {
+                    Question = x.Romanization,
+                    Answers = new[] { x.Character }
+                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
+
+            BeginTest();
         }
     }
 }
