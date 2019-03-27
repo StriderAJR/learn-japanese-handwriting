@@ -101,14 +101,14 @@ namespace LearnJapaneseWords
         }
 
         private void Recognise() {
-            if (theInkCanvas.Strokes.Count == 0) {
+            if (inkCanvas.Strokes.Count == 0) {
                 tbRecognised.Text = string.Empty;
                 return;
             }
 
             using (MemoryStream ms = new MemoryStream())
             {
-                theInkCanvas.Strokes.Save(ms);
+                inkCanvas.Strokes.Save(ms);
                 var myInkCollector = new InkCollector();
                 var ink = new Ink();
                 ink.Load(ms.ToArray());
@@ -130,6 +130,9 @@ namespace LearnJapaneseWords
             var currentWord = test[currentQuestion];
             tbQuestionNumber.Text = $"{currentQuestion + 1} из {vocabulary.Lessons[0].Words.Count}";
             tbQuestion.Text = currentWord.Question;
+            inkCanvas.Strokes.Clear();
+            tbAnswer.Text = string.Empty;
+            tbAnswer.Background = Brushes.Transparent;
         }
 
         private void BeginTest() {
@@ -142,7 +145,7 @@ namespace LearnJapaneseWords
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            theInkCanvas.Strokes.Clear();
+            inkCanvas.Strokes.Clear();
         }
 
         private void TheInkCanvas_StrokeCollected(object sender, InkCanvasStrokeCollectedEventArgs e)
