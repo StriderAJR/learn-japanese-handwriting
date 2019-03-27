@@ -67,6 +67,10 @@ namespace LearnJapaneseWords
      *  - при открытии программы есть опция открыть такой файл
      *  - по умолчанию открывается последний открытый файл
      *  - шифровать файл не обязательно, пусть валяется в открытом виде, проще будет вносить правки вручную
+     *
+     * 5. Сделать проверку, установлен ли в системе распознаватель рукописного японского ввода.
+     * Лайфхак (ПРОВЕРИТЬ!): язык установить, а потом удалить - распознаватель останется, видимо,
+     * файлы в винде остаются
      */
 
 
@@ -74,6 +78,7 @@ namespace LearnJapaneseWords
     {
         DispatcherTimer waitTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5) };
         Vocabulary vocabulary = new Vocabulary();
+        private Recognizer jpnRecognizer = null;
 
         private int currentQuestion = -1;
 
@@ -85,6 +90,11 @@ namespace LearnJapaneseWords
 
             MenuGrid.Visibility = Visibility.Visible;
             TestGrid.Visibility = Visibility.Collapsed;
+
+            foreach (var rec in new Recognizers()) {
+                Debug.WriteLine(rec.Name);
+                if (rec.Name.Contains("日本語")) jpnRecognizer = rec;
+            }
         }
 
         private void Recognise() {
@@ -100,7 +110,7 @@ namespace LearnJapaneseWords
                 var ink = new Ink();
                 ink.Load(ms.ToArray());
 
-                using (RecognizerContext context = new RecognizerContext())
+                using (RecognizerContext context = jpnRecognizer.CreateRecognizerContext())
                 {
                     context.Strokes = ink.Strokes;
                     var result = context.Recognize(out var status);
