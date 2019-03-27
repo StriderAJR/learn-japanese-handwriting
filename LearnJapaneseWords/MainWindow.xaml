@@ -44,7 +44,7 @@
                 <Border
                     BorderBrush="Black"
                     BorderThickness="1">
-                    <InkCanvas Name="theInkCanvas"
+                    <InkCanvas Name="inkCanvas"
                                Background="LightGray" StrokeCollected="TheInkCanvas_StrokeCollected"
                                ManipulationStarted="TheInkCanvas_ManipulationStarted" />
                 </Border>
