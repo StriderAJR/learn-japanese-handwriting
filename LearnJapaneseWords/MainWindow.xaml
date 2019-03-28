@@ -60,7 +60,6 @@
                 </Border>
                 <StackPanel Margin="0,15,0,0">
                     <Button Name="btnClear"
-                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
                             Content="Очистить"
                             Click="btnClear_Click" />
 
@@ -69,7 +68,9 @@
                         <TextBlock Name="tbRecognised" />
                     </StackPanel>
 
-                    <Button Name="btnCheckAnswer" Click="BtnCheckAnswer_Click">Проверить</Button>
+                    <Button Name="btnCheckAnswer" 
+                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                            Click="BtnCheckAnswer_Click">Проверить</Button>
                     <TextBlock Name="tbAnswer" Height="25"/>
                     <Button Name="btnNextQuestion" Click="BtnNextQuestion_Click">Дальше</Button>
                 </StackPanel>
