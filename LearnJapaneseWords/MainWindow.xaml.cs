@@ -77,7 +77,6 @@ namespace LearnJapaneseWords
 
     public partial class MainWindow : Window
     {
-        DispatcherTimer waitTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5) };
         Vocabulary vocabulary = new Vocabulary();
         private Recognizer jpnRecognizer = null;
         RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
@@ -88,7 +87,6 @@ namespace LearnJapaneseWords
         public MainWindow()
         {
             InitializeComponent();
-            waitTimer.Tick += (sender, args) => { Recognise(); };
             vocabulary.Load("..\\..\\..\\mnn1_vocabulary.json", "..\\..\\..\\hiragana.json", "..\\..\\..\\katakana.json");
 
             MenuGrid.Visibility = Visibility.Visible;
@@ -132,6 +130,7 @@ namespace LearnJapaneseWords
             inkCanvas.Strokes.Clear();
             tbAnswer.Text = string.Empty;
             tbAnswer.Background = Brushes.Transparent;
+            tbRecognised.Text = string.Empty;
         }
 
         private void BeginTest() {
@@ -150,14 +149,12 @@ namespace LearnJapaneseWords
         private void TheInkCanvas_StrokeCollected(object sender, InkCanvasStrokeCollectedEventArgs e)
         {
             Debug.WriteLine("TheInkCanvas_StrokeCollected");
-            waitTimer.Stop();
-            waitTimer.Start();
+            Recognise();
         }
 
         private void TheInkCanvas_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
             Debug.WriteLine("TheInkCanvas_ManipulationStarted");
-            waitTimer.Stop();
         }
 
         private void BtnNextQuestion_Click(object sender, RoutedEventArgs e) {
