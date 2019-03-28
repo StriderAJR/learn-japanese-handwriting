@@ -210,7 +210,7 @@ namespace LearnJapaneseWords
 
         private void BtnHiraganaTest_Click(object sender, RoutedEventArgs e)
         {
-            test = vocabulary.Hiragana.Select(x =>
+            test = vocabulary.Hiragana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
                 new TestQuestion
                 {
                     Question = x.Romanization,
@@ -222,7 +222,7 @@ namespace LearnJapaneseWords
 
         private void BtnKatakanaTest_Click(object sender, RoutedEventArgs e)
         {
-            test = vocabulary.Katakana.Select(x =>
+            test = vocabulary.Katakana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
                 new TestQuestion
                 {
                     Question = x.Romanization,

@@ -64,6 +64,13 @@ namespace LearnJapaneseWords
         public string Character { get; set; }
         [JsonProperty("romanization")]
         public string Romanization { get; set; }
+        [JsonProperty("type")]
+        public KanaSeriesType Type { get; set; }
+    }
+
+    public enum KanaSeriesType
+    {
+        Main = 0, Extra = 1, Multi = 2, MultiExtra = 3
     }
 
     public class Kanji {

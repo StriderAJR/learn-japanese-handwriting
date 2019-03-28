@@ -2,551 +2,661 @@
 {
 "char_id": "a",
 "character": "あ",
-"romanization": "a"
+"romanization": "a",
+"type": 0
 },
 {
 "char_id": "i",
 "character": "い",
-"romanization": "i"
+"romanization": "i",
+"type": 0
 },
 {
 "char_id": "u",
 "character": "う",
-"romanization": "u"
+"romanization": "u",
+"type": 0
 },
 {
 "char_id": "e",
 "character": "え",
-"romanization": "e"
+"romanization": "e",
+"type": 0
 },
 {
 "char_id": "o",
 "character": "お",
-"romanization": "o"
+"romanization": "o",
+"type": 0
 },
 {
 "char_id": "ka",
 "character": "か",
-"romanization": "ka"
+"romanization": "ka",
+"type": 0
 },
 {
 "char_id": "ki",
 "character": "き",
-"romanization": "ki"
+"romanization": "ki",
+"type": 0
 },
 {
 "char_id": "ku",
 "character": "く",
-"romanization": "ku"
+"romanization": "ku",
+"type": 0
 },
 {
 "char_id": "ke",
 "character": "け",
-"romanization": "ke"
+"romanization": "ke",
+"type": 0
 },
 {
 "char_id": "ko",
 "character": "こ",
-"romanization": "ko"
+"romanization": "ko",
+"type": 0
 },
 {
 "char_id": "sa",
 "character": "さ",
-"romanization": "sa"
+"romanization": "sa",
+"type": 0
 },
 {
 "char_id": "si",
 "character": "し",
-"romanization": "shi"
+"romanization": "shi",
+"type": 0
 },
 {
 "char_id": "su",
 "character": "す",
-"romanization": "su"
+"romanization": "su",
+"type": 0
 },
 {
 "char_id": "se",
 "character": "せ",
-"romanization": "se"
+"romanization": "se",
+"type": 0
 },
 {
 "char_id": "so",
 "character": "そ",
-"romanization": "so"
+"romanization": "so",
+"type": 0
 },
 {
 "char_id": "ta",
 "character": "た",
-"romanization": "ta"
+"romanization": "ta",
+"type": 0
 },
 {
 "char_id": "ti",
 "character": "ち",
-"romanization": "chi"
+"romanization": "chi",
+"type": 0
 },
 {
 "char_id": "tu",
 "character": "つ",
-"romanization": "tsu"
+"romanization": "tsu",
+"type": 0
 },
 {
 "char_id": "te",
 "character": "て",
-"romanization": "te"
+"romanization": "te",
+"type": 0
 },
 {
 "char_id": "to",
 "character": "と",
-"romanization": "to"
+"romanization": "to",
+"type": 0
 },
 {
 "char_id": "na",
 "character": "な",
-"romanization": "na"
+"romanization": "na",
+"type": 0
 },
 {
 "char_id": "ni",
 "character": "に",
-"romanization": "ni"
+"romanization": "ni",
+"type": 0
 },
 {
 "char_id": "nu",
 "character": "ぬ",
-"romanization": "nu"
+"romanization": "nu",
+"type": 0
 },
 {
 "char_id": "ne",
 "character": "ね",
-"romanization": "ne"
+"romanization": "ne",
+"type": 0
 },
 {
 "char_id": "no",
 "character": "の",
-"romanization": "no"
+"romanization": "no",
+"type": 0
 },
 {
 "char_id": "ha",
 "character": "は",
-"romanization": "ha"
+"romanization": "ha",
+"type": 0
 },
 {
 "char_id": "hi",
 "character": "ひ",
-"romanization": "hi"
+"romanization": "hi",
+"type": 0
 },
 {
 "char_id": "hu",
 "character": "ふ",
-"romanization": "fu"
+"romanization": "fu",
+"type": 0
 },
 {
 "char_id": "he",
 "character": "へ",
-"romanization": "he"
+"romanization": "he",
+"type": 0
 },
 {
 "char_id": "ho",
 "character": "ほ",
-"romanization": "ho"
+"romanization": "ho",
+"type": 0
 },
 {
 "char_id": "ma",
 "character": "ま",
-"romanization": "ma"
+"romanization": "ma",
+"type": 0
 },
 {
 "char_id": "mi",
 "character": "み",
-"romanization": "mi"
+"romanization": "mi",
+"type": 0
 },
 {
 "char_id": "mu",
 "character": "む",
-"romanization": "mu"
+"romanization": "mu",
+"type": 0
 },
 {
 "char_id": "me",
 "character": "め",
-"romanization": "me"
+"romanization": "me",
+"type": 0
 },
 {
 "char_id": "mo",
 "character": "も",
-"romanization": "mo"
+"romanization": "mo",
+"type": 0
 },
 {
 "char_id": "ya",
 "character": "や",
-"romanization": "ya"
+"romanization": "ya",
+"type": 0
 },
 {
 "char_id": "yu",
 "character": "ゆ",
-"romanization": "yu"
+"romanization": "yu",
+"type": 0
 },
 {
 "char_id": "yo",
 "character": "よ",
-"romanization": "yo"
+"romanization": "yo",
+"type": 0
 },
 {
 "char_id": "ra",
 "character": "ら",
-"romanization": "ra"
+"romanization": "ra",
+"type": 0
 },
 {
 "char_id": "ri",
 "character": "り",
-"romanization": "ri"
+"romanization": "ri",
+"type": 0
 },
 {
 "char_id": "ru",
 "character": "る",
-"romanization": "ru"
+"romanization": "ru",
+"type": 0
 },
 {
 "char_id": "re",
 "character": "れ",
-"romanization": "re"
+"romanization": "re",
+"type": 0
 },
 {
 "char_id": "ro",
 "character": "ろ",
-"romanization": "ro"
+"romanization": "ro",
+"type": 0
 },
 {
 "char_id": "wa",
 "character": "わ",
-"romanization": "wa"
+"romanization": "wa",
+"type": 0
 },
 {
 "char_id": "wi",
 "character": "ゐ",
-"romanization": "wi"
+"romanization": "wi",
+"type": 1
 },
 {
 "char_id": "we",
 "character": "ゑ",
-"romanization": "we"
+"romanization": "we",
+"type": 1
 },
 {
 "char_id": "wo",
 "character": "を",
-"romanization": "wo"
+"romanization": "wo",
+"type": 0
 },
 {
 "char_id": "-n",
 "character": "ん",
-"romanization": "n"
+"romanization": "n",
+"type": 0
 },
 {
 "char_id": "ga",
 "character": "が",
-"romanization": "ga"
+"romanization": "ga",
+"type": 1
 },
 {
 "char_id": "gi",
 "character": "ぎ",
-"romanization": "gi"
+"romanization": "gi",
+"type": 1
 },
 {
 "char_id": "gu",
 "character": "ぐ",
-"romanization": "gu"
+"romanization": "gu",
+"type": 1
 },
 {
 "char_id": "ge",
 "character": "げ",
-"romanization": "ge"
+"romanization": "ge",
+"type": 1
 },
 {
 "char_id": "go",
 "character": "ご",
-"romanization": "go"
+"romanization": "go",
+"type": 1
 },
 {
 "char_id": "za",
 "character": "ざ",
-"romanization": "za"
+"romanization": "za",
+"type": 1
 },
 {
 "char_id": "zi",
 "character": "じ",
-"romanization": "ji"
+"romanization": "ji",
+"type": 1
 },
 {
 "char_id": "zu",
 "character": "ず",
-"romanization": "zu"
+"romanization": "zu",
+"type": 1
 },
 {
 "char_id": "ze",
 "character": "ぜ",
-"romanization": "ze"
+"romanization": "ze",
+"type": 1
 },
 {
 "char_id": "zo",
 "character": "ぞ",
-"romanization": "zo"
+"romanization": "zo",
+"type": 1
 },
 {
 "char_id": "da",
 "character": "だ",
-"romanization": "da"
+"romanization": "da",
+"type": 1
 },
 {
 "char_id": "di",
 "character": "ぢ",
-"romanization": "ji"
+"romanization": "ji",
+"type": 1
 },
 {
 "char_id": "du",
 "character": "づ",
-"romanization": "zu"
+"romanization": "zu",
+"type": 1
 },
 {
 "char_id": "de",
 "character": "で",
-"romanization": "de"
+"romanization": "de",
+"type": 1
 },
 {
 "char_id": "do",
 "character": "ど",
-"romanization": "do"
+"romanization": "do",
+"type": 1
 },
 {
 "char_id": "ba",
 "character": "ば",
-"romanization": "ba"
+"romanization": "ba",
+"type": 1
 },
 {
 "char_id": "bi",
 "character": "び",
-"romanization": "bi"
+"romanization": "bi",
+"type": 1
 },
 {
 "char_id": "bu",
 "character": "ぶ",
-"romanization": "bu"
+"romanization": "bu",
+"type": 1
 },
 {
 "char_id": "be",
 "character": "べ",
-"romanization": "be"
+"romanization": "be",
+"type": 1
 },
 {
 "char_id": "bo",
 "character": "ぼ",
-"romanization": "bo"
+"romanization": "bo",
+"type": 1
 },
 {
 "char_id": "pa",
 "character": "ぱ",
-"romanization": "pa"
+"romanization": "pa",
+"type": 1
 },
 {
 "char_id": "pi",
 "character": "ぴ",
-"romanization": "pi"
+"romanization": "pi",
+"type": 1
 },
 {
 "char_id": "pu",
 "character": "ぷ",
-"romanization": "pu"
+"romanization": "pu",
+"type": 1
 },
 {
 "char_id": "pe",
 "character": "ぺ",
-"romanization": "pe"
+"romanization": "pe",
+"type": 1
 },
 {
 "char_id": "po",
 "character": "ぽ",
-"romanization": "po"
+"romanization": "po",
+"type": 1
 },
 {
 "char_id": "vu",
 "character": "ゔ",
-"romanization": "vu"
+"romanization": "vu",
+"type": 1
 },
 {
 "char_id": "kya",
 "character": "きゃ",
-"romanization": "kya"
+"romanization": "kya",
+"type": 2
 },
 {
 "char_id": "kyu",
 "character": "きゅ",
-"romanization": "kyu"
+"romanization": "kyu",
+"type": 2
 },
 {
 "char_id": "kyo",
 "character": "きょ",
-"romanization": "kyo"
+"romanization": "kyo",
+"type": 2
 },
 {
 "char_id": "sya",
 "character": "しゃ",
-"romanization": "sha"
+"romanization": "sha",
+"type": 2
 },
 {
 "char_id": "syu",
 "character": "しゅ",
-"romanization": "shu"
+"romanization": "shu",
+"type": 2
 },
 {
 "char_id": "syo",
 "character": "しょ",
-"romanization": "sho"
+"romanization": "sho",
+"type": 2
 },
 {
 "char_id": "tya",
 "character": "ちゃ",
-"romanization": "cha"
+"romanization": "cha",
+"type": 2
 },
 {
 "char_id": "tyu",
 "character": "ちゅ",
-"romanization": "chu"
+"romanization": "chu",
+"type": 2
 },
 {
 "char_id": "tyo",
 "character": "ちょ",
-"romanization": "cho"
+"romanization": "cho",
+"type": 2
 },
 {
 "char_id": "nya",
 "character": "にゃ",
-"romanization": "nya"
+"romanization": "nya",
+"type": 2
 },
 {
 "char_id": "nyu",
 "character": "にゅ",
-"romanization": "nyu"
+"romanization": "nyu",
+"type": 2
 },
 {
 "char_id": "nyo",
 "character": "にょ",
-"romanization": "nyo"
+"romanization": "nyo",
+"type": 2
 },
 {
 "char_id": "hya",
 "character": "ひゃ",
-"romanization": "hya"
+"romanization": "hya",
+"type": 2
 },
 {
 "char_id": "hyu",
 "character": "ひゅ",
-"romanization": "hyu"
+"romanization": "hyu",
+"type": 2
 },
 {
 "char_id": "hyo",
 "character": "ひょ",
-"romanization": "hyo"
+"romanization": "hyo",
+"type": 2
 },
 {
 "char_id": "mya",
 "character": "みゃ",
-"romanization": "mya"
+"romanization": "mya",
+"type": 2
 },
 {
 "char_id": "myu",
 "character": "みゅ",
-"romanization": "myu"
+"romanization": "myu",
+"type": 2
 },
 {
 "char_id": "myo",
 "character": "みょ",
-"romanization": "myo"
+"romanization": "myo",
+"type": 2
 },
 {
 "char_id": "rya",
 "character": "りゃ",
-"romanization": "rya"
+"romanization": "rya",
+"type": 2
 },
 {
 "char_id": "ryu",
 "character": "りゅ",
-"romanization": "ryu"
+"romanization": "ryu",
+"type": 2
 },
 {
 "char_id": "ryo",
 "character": "りょ",
-"romanization": "ryo"
+"romanization": "ryo",
+"type": 2
 },
 {
 "char_id": "gya",
 "character": "ぎゃ",
-"romanization": "gya"
+"romanization": "gya",
+"type": 3
 },
 {
 "char_id": "gyu",
 "character": "ぎゅ",
-"romanization": "gyu"
+"romanization": "gyu",
+"type": 3
 },
 {
 "char_id": "gyo",
 "character": "ぎょ",
-"romanization": "gyo"
+"romanization": "gyo",
+"type": 3
 },
 {
 "char_id": "zya",
 "character": "じゃ",
-"romanization": "ja"
+"romanization": "ja",
+"type": 3
 },
 {
 "char_id": "zyu",
 "character": "じゅ",
-"romanization": "ju"
+"romanization": "ju",
+"type": 3
 },
 {
 "char_id": "zyo",
 "character": "じょ",
-"romanization": "jo"
+"romanization": "jo",
+"type": 3
 },
 {
 "char_id": "dya",
 "character": "ぢゃ",
-"romanization": "ja"
+"romanization": "ja",
+"type": 3
 },
 {
 "char_id": "dyu",
 "character": "ぢゅ",
-"romanization": "ju"
+"romanization": "ju",
+"type": 3
 },
 {
 "char_id": "dyo",
 "character": "ぢょ",
-"romanization": "jo"
+"romanization": "jo",
+"type": 3
 },
 {
 "char_id": "bya",
 "character": "びゃ",
-"romanization": "bya"
+"romanization": "bya",
+"type": 3
 },
 {
 "char_id": "byu",
 "character": "びゅ",
-"romanization": "byu"
+"romanization": "byu",
+"type": 3
 },
 {
 "char_id": "byo",
 "character": "にょ",
-"romanization": "byo"
+"romanization": "byo",
+"type": 3
 },
 {
 "char_id": "pya",
 "character": "ぴゃ",
-"romanization": "pya"
+"romanization": "pya",
+"type": 3
 },
 {
 "char_id": "pyu",
 "character": "ぴゅ",
-"romanization": "pyu"
+"romanization": "pyu",
+"type": 3
 },
 {
 "char_id": "pyo",
 "character": "ぴょ",
-"romanization": "pyo"
+"romanization": "pyo",
+"type": 3
 }
 ]
