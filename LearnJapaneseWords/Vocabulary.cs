@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace LearnJapaneseWords
 {
-    class TestQuestion {
+    public class TestQuestion {
         /// <summary>
         /// Текст вопроса
         /// </summary>

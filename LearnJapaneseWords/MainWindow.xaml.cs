@@ -78,109 +78,21 @@ namespace LearnJapaneseWords
     public partial class MainWindow : Window
     {
         Vocabulary vocabulary = new Vocabulary();
-        private Recognizer jpnRecognizer = null;
         RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
-
-        private int currentQuestion = -1;
-        private TestQuestion[] test = new TestQuestion[0];
 
         public MainWindow()
         {
             InitializeComponent();
             vocabulary.Load("..\\..\\..\\mnn1_vocabulary.json", "..\\..\\..\\hiragana.json", "..\\..\\..\\katakana.json");
-
-            MenuGrid.Visibility = Visibility.Visible;
-            TestGrid.Visibility = Visibility.Collapsed;
-
-            foreach (var rec in new Recognizers()) {
-                Debug.WriteLine(rec.Name);
-                if (rec.Name.Contains("日本語")) jpnRecognizer = rec;
-            }
         }
 
-        private void Recognise() {
-            if (inkCanvas.Strokes.Count == 0) {
-                tbRecognised.Text = string.Empty;
-                return;
-            }
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                inkCanvas.Strokes.Save(ms);
-                var ink = new Ink();
-                ink.Load(ms.ToArray());
-
-                using (RecognizerContext context = jpnRecognizer.CreateRecognizerContext())
-                {
-                    context.Strokes = ink.Strokes;
-                    var result = context.Recognize(out var status);
-                    if (status == RecognitionStatus.NoError)
-                        tbRecognised.Text = result.TopString;
-                    else
-                        MessageBox.Show("Recognition failed");
-
-                }
-            }
-        }
-
-        private void RefreshQuestionText() {
-            var currentWord = test[currentQuestion];
-            tbQuestionNumber.Text = $"{currentQuestion + 1} из {vocabulary.Lessons[0].Words.Count}";
-            tbQuestion.Text = currentWord.Question;
-            inkCanvas.Strokes.Clear();
-            tbAnswer.Text = string.Empty;
-            tbAnswer.Background = Brushes.Transparent;
-            tbRecognised.Text = string.Empty;
-        }
-
-        private void BeginTest() {
+        private void BeginTest(string headerText, List<TestQuestion> test) {
             MenuGrid.Visibility = Visibility.Collapsed;
-            TestGrid.Visibility = Visibility.Visible;
 
-            currentQuestion = 0;
-            RefreshQuestionText();
+            TestControl testControl = new TestControl("TestControl", headerText, test);
+            RootGrid.Children.Add(testControl);
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            inkCanvas.Strokes.Clear();
-        }
-
-        private void TheInkCanvas_StrokeCollected(object sender, InkCanvasStrokeCollectedEventArgs e)
-        {
-            Debug.WriteLine("TheInkCanvas_StrokeCollected");
-            Recognise();
-        }
-
-        private void TheInkCanvas_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            Debug.WriteLine("TheInkCanvas_ManipulationStarted");
-        }
-
-        private void BtnNextQuestion_Click(object sender, RoutedEventArgs e) {
-            if (currentQuestion + 1 < test.Length) {
-                currentQuestion++;
-            }
-            else {
-                currentQuestion = 0;
-            }
-            RefreshQuestionText();
-        }
-
-        private void BtnCheckAnswer_Click(object sender, RoutedEventArgs e)
-        {
-            var answers = test[currentQuestion].Answers;
-            var userAnswer = tbRecognised.Text;
-            tbAnswer.Text = string.Join(", ", answers);
-            if (answers.Contains(tbRecognised.Text))
-            {
-                tbAnswer.Background = Brushes.LightGreen;
-            }
-            else
-            {
-                tbAnswer.Background = Brushes.PaleVioletRed;
-            }
-        }
 
         static int GetNextInt32(RNGCryptoServiceProvider rnd)
         {
@@ -191,42 +103,35 @@ namespace LearnJapaneseWords
 
         private void BtnBeginTest_Click(object sender, RoutedEventArgs e)
         {
-            test = vocabulary.Lessons[0].Words.Select(x =>
+            var test = vocabulary.Lessons[0].Words.Select(x =>
                 new TestQuestion
                 {
                     Question = x.Rus,
                     Answers = new[] { x.JpnKana, x.JpnKanji }
-                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
-
-            
-            test = test.ToArray();
-            
-
-            BeginTest();
+                }).OrderBy(x => GetNextInt32(rnd)).ToList();
+            BeginTest("Слова", test);
         }
 
         private void BtnHiraganaTest_Click(object sender, RoutedEventArgs e)
         {
-            test = vocabulary.Hiragana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
+            var test = vocabulary.Hiragana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
                 new TestQuestion
                 {
                     Question = x.Romanization,
                     Answers = new[] { x.Character }
-                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
-
-            BeginTest();
+                }).OrderBy(x => GetNextInt32(rnd)).ToList();
+            BeginTest("Хирагана", test);
         }
 
         private void BtnKatakanaTest_Click(object sender, RoutedEventArgs e)
         {
-            test = vocabulary.Katakana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
+            var test = vocabulary.Katakana.Where(x => x.Type == KanaSeriesType.Main).Select(x =>
                 new TestQuestion
                 {
                     Question = x.Romanization,
                     Answers = new[] { x.Character }
-                }).OrderBy(x => GetNextInt32(rnd)).ToArray();
-
-            BeginTest();
+                }).OrderBy(x => GetNextInt32(rnd)).ToList();
+            BeginTest("Катакана", test);
         }
     }
 }

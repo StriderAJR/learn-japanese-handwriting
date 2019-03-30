@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearnJapaneseWords"
         mc:Ignorable="d"
-        Title="MainWindow" Height="Auto" Width="800"
+        Title="MainWindow" Height="600" Width="800"
+        MinHeight="600"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,19 +14,18 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="CanMinimize"
         
         >
-    <Grid>
+    <Grid Name="RootGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="Файл" />
-        </Menu>
-        <Grid Name="MenuGrid" Visibility="Collapsed"
-              Grid.Row="1">
+        <!-- <Menu Grid.Row="0"> -->
+        <!--     <MenuItem Header="Файл" /> -->
+        <!-- </Menu> -->
+        <Grid Name="MenuGrid" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -36,44 +36,6 @@
                 <Button Name="btnBeginTest" Click="BtnBeginTest_Click">Слова</Button>
                 <Button Name="btnHiraganaTest" Click="BtnHiraganaTest_Click">Хирагана</Button>
                 <Button Name="btnKatakanaTest" Click="BtnKatakanaTest_Click">Катакана</Button>
-            </StackPanel>
-        </Grid>
-        <Grid Name="TestGrid" Grid.Row="1" Visibility="Visible">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Name="tbQuestionNumber" />
-                <TextBlock Name="tbQuestion" />
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Border
-                    BorderBrush="Black"
-                    BorderThickness="1">
-                    <InkCanvas Name="inkCanvas"
-                               Background="LightGray" StrokeCollected="TheInkCanvas_StrokeCollected"
-                               ManipulationStarted="TheInkCanvas_ManipulationStarted" />
-                </Border>
-                <StackPanel Margin="0,15,0,0">
-                    <Button Name="btnClear"
-                            Content="Очистить"
-                            Click="btnClear_Click" />
-
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
-                        <TextBlock Text="Ваш ответ:" Margin="0,0,10,0" />
-                        <TextBlock Name="tbRecognised" />
-                    </StackPanel>
-
-                    <Button Name="btnCheckAnswer" 
-                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                            Click="BtnCheckAnswer_Click">Проверить</Button>
-                    <TextBlock Name="tbAnswer" Height="25"/>
-                    <Button Name="btnNextQuestion" Click="BtnNextQuestion_Click">Дальше</Button>
-                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
