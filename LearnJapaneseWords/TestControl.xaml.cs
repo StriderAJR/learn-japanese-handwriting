@@ -81,16 +81,22 @@ namespace LearnJapaneseWords
             var answers = query[currentQuestion].Answers;
             var userAnswer = tbRecognised.Text;
             tbAnswer.Text = string.Join(", ", answers);
-            if (answers.Contains(tbRecognised.Text))
+            if (answers.Contains(userAnswer))
             {
-                tbAnswer.Background = Brushes.LightGreen;
+                tbResult.Background = Brushes.LightGreen;
+                tbResult.Text = "Верно";
             }
             else
             {
-                tbAnswer.Background = Brushes.PaleVioletRed;
-                if(currentQuestion + 5 >= query.Count) query.Add(query[currentQuestion]);
+                tbResult.Background = Brushes.PaleVioletRed;
+                tbResult.Text = "Неверно";
+                if (currentQuestion + 5 >= query.Count) query.Add(query[currentQuestion]);
                 else query.Insert(currentQuestion + 5, query[currentQuestion]);
             }
+
+            lblAnswer.Visibility = Visibility.Visible;
+            tbAnswer.Visibility = Visibility.Visible;
+            tbResult.Visibility = Visibility.Visible;
         }
 
         private void Recognise()
@@ -129,6 +135,15 @@ namespace LearnJapaneseWords
             tbAnswer.Text = string.Empty;
             tbAnswer.Background = Brushes.Transparent;
             tbRecognised.Text = string.Empty;
+            tbResult.Text = string.Empty;
+            lblAnswer.Visibility = Visibility.Hidden;
+            tbAnswer.Visibility = Visibility.Hidden;
+            tbResult.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnUndo_Click(object sender, RoutedEventArgs e)
+        {
+            inkCanvas.Strokes.RemoveAt(inkCanvas.Strokes.Count-1);
         }
     }
 }
