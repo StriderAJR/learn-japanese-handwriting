@@ -89,8 +89,15 @@ namespace LearnJapaneseWords
         private void BeginTest(string headerText, List<TestQuestion> test) {
             MenuGrid.Visibility = Visibility.Collapsed;
 
-            TestControl testControl = new TestControl("TestControl", headerText, test);
+            TestControl testControl = new TestControl("testControl", headerText, test, EndTest);
             RootGrid.Children.Add(testControl);
+        }
+
+        private void EndTest() {
+            var testControl = ControlUtils.FindChild<TestControl>(this, "testControl");
+            RootGrid.Children.Remove(testControl);
+
+            MenuGrid.Visibility = Visibility.Visible;
         }
 
 

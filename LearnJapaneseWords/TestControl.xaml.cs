@@ -28,7 +28,9 @@ namespace LearnJapaneseWords
         private List<TestQuestion> query;
         private int currentQuestion = -1;
 
-        public TestControl(string name, string headerText, List<TestQuestion> questions)
+        private Action endTestAction;
+
+        public TestControl(string name, string headerText, List<TestQuestion> questions, Action endTestAction)
         {
             InitializeComponent();
             tbHeader.Text = headerText;
@@ -36,6 +38,7 @@ namespace LearnJapaneseWords
             Name = name;
             _questions = questions;
             query = new List<TestQuestion>(_questions);
+            this.endTestAction = endTestAction;
 
             foreach (var rec in new Recognizers())
             {
@@ -144,6 +147,10 @@ namespace LearnJapaneseWords
         private void BtnUndo_Click(object sender, RoutedEventArgs e)
         {
             inkCanvas.Strokes.RemoveAt(inkCanvas.Strokes.Count-1);
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e) {
+            endTestAction.Invoke();
         }
     }
 }
